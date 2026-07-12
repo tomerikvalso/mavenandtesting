@@ -28,6 +28,7 @@ jobs:
       - run:
           name: Set up GCloud
           command: |
+            echo ${GOOGLE_PROJECT_ID} | 
             echo $GCLOUD_SERVICE_KEY | base64 --decode | gcloud auth activate-service-account --key-file=-
               gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
 
