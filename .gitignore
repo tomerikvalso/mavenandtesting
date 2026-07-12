@@ -26,3 +26,4 @@ hs_err_pid*
 /.idea
 /ntp-ear/target/application.xml
 /ntp-ear/target
+/target
