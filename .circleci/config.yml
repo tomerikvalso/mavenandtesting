@@ -11,7 +11,7 @@ jobs:
     docker:
       # Specify the version you desire here
       # See: https://circleci.com/developer/images/image/cimg/base
-      - image: cimg/base:current
+      - image: google/cloud-sdk
     working_directory: ~/dev2
 
     # Add steps to the job
