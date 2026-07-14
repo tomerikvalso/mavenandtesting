@@ -30,7 +30,7 @@ jobs:
       - run:
           name: Build an image
           command: |
-            docker build -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+            docker build .
       - run:
           name: Run application in background
           command: |
