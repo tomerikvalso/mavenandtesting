@@ -28,6 +28,9 @@ jobs:
           name: "Copy dir"
           command: cp /home/circleci/project/*.* /home/circleci/project/bin
       - run:
+          name: touch dockerfile
+          command: touch Dockerfile
+      - run:
           name: Build an image
           command: |
             docker build -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
