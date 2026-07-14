@@ -12,6 +12,7 @@ jobs:
       # Specify the version you desire here
       # See: https://circleci.com/developer/images/image/cimg/base
       - image: cimg/base:2026.07
+    working_directory: /home/circleci/project
 
     # Add steps to the job
     # See: https://circleci.com/docs/guides/orchestrate/jobs-steps/#steps-overview & https://circleci.com/docs/reference/configuration-reference/#steps
@@ -21,9 +22,15 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
+          name: "Make dir"
+          command: mkdir ~/dev2/bin;
+      - run:
+          name: "Copy dir"
+          command: cp ~/dev2/*.* ~/dev2/bin
+      - run:
           name: Build an image
           command: |
-            docker build .
+            docker build -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
       - run:
           name: Run application in background
           command: |
