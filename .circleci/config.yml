@@ -23,7 +23,7 @@ jobs:
           docker_layer_caching: true
       - run:
           name: "Make dir"
-          command: mkdir bin;
+          command:  "echo Hello, World!"
       - run:
           name: "Copy dir"
           command: cp ~/dev2/*.* ~/dev2/bin
