@@ -35,10 +35,6 @@ jobs:
           command: |
             docker build -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
       - run:
-          name: docker compose nocache
-          command: docker-compose build --no-cache
-
-      - run:
           name: Run application in background
           command: |
             docker run  -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
