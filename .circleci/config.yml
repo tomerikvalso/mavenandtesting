@@ -35,6 +35,10 @@ jobs:
           command: |
             docker build -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
       - run:
+          name: Chmod dockerentrypoint
+          command: chmod 755 docker-entrypoint.sh
+
+      - run:
           name: Run application in background
           command: |
             docker run  -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
