@@ -1,12 +1,4 @@
-FROM alpine:3.5
-
-RUN addgroup --gid 10001 app
-RUN adduser --gid 10001 --uid 10001 \
-    --home /app --shell /sbin/nologin \
-    --disabled-password app
-
-
-USER app
-EXPOSE 8080
-WORKDIR /app
-ENTRYPOINT /go/bin/invoicer
+FROM eclipse-temurin:21
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
