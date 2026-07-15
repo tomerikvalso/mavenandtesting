@@ -100,7 +100,7 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - jobpremaven:
-          name: predeploy-staging
+          name: jobpremaven
           post-steps:
             - run:
                 name: "Say hello"
@@ -117,11 +117,11 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - jobpostmaven:
-          name: predeploy-staging
+          name: jobpostmaven
           post-steps:
             - run:
-                name: "Say hello"
-                command: "echo Hello, World!"
+                name: "Say hello2"
+                command: "echo Hello2, World!"
           filters:
             branches:
               only: circleci-project-setup
