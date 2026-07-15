@@ -29,8 +29,7 @@ jobs:
           command: cp /home/circleci/project/*.* /home/circleci/project/bin
       - run:
           name: access rights
-          command: chmod +x bin/*; \
-            chmod +x mvnw;
+          command: chmod +x mvnw;
 
       - run:
           name: mvn install
