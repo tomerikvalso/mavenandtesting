@@ -108,7 +108,7 @@ workflows:
           filters:
             branches:
               only: circleci-project-setup
-  workflowtwo_maven_test:
+  maven_test:
     jobs:
       - maven/test:
           command: '-X compile'
