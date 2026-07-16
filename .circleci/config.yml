@@ -16,6 +16,7 @@ jobs:
       - image: cimg/base:2026.07
     
     steps:
+      - checkout
       - run:
           name: Save test results
           command: |
