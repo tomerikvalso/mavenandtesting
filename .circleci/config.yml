@@ -1,8 +1,5 @@
 version: 2.1
-executors:
-  java21:
-    docker:
-      - image: 'cimg/openjdk:21.0'
+
 jobs:
   jobpremaven:
     docker:
@@ -12,12 +9,6 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-      - run:
-          name: access
-          command: chmod +x mvnw
-      - run:
-          name: "mvn"
-          command: ./mvnw clean package -DskipTests;
 
   jobpostmaven:
     docker:
@@ -78,7 +69,10 @@ workflows:
           filters:
             branches:
               only: circleci-project-setup
-
+  maven_test:
+    jobs:
+      - maven/test:
+          command: '-X verify'
   workflowpostmaven: 
     jobs:
       - jobpostmaven:
