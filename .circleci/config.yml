@@ -9,22 +9,16 @@ jobs:
   jobpremaven:
     docker:
       - image: cimg/base:2026.07
-    working_directory: /home/circleci/project
+    
     steps:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-      - run:
-          name: "Make dir"
-          command: mkdir bin;
-      - run:
-          name: "Copy dir"
-          command: cp /home/circleci/project/*.* /home/circleci/project/bin
 
   jobpostmaven:
     docker:
       - image: cimg/base:2026.07
-    working_directory: /home/circleci/project
+    
     steps:
       - checkout
       - setup_remote_docker:
