@@ -66,7 +66,7 @@ workflows:
           post-steps:
             - run:
                 name: "Say hello"
-                command: "echo Hello, World!"
+                command: "echo Hello, World pre!"
           filters:
             branches:
               only: circleci-project-setup
