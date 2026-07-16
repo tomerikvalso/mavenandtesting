@@ -18,15 +18,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Save test results
-          command: |
-            mkdir -p ~/test-results/junit/
-            find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
-          when: always
-      - store_test_results:
-          path: ~/test-results
-
-      - run:
           name: Build an image
           command: |
             docker build --tag $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME$CIRCLE_SHA1 .
