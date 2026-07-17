@@ -11,7 +11,7 @@ ENV HOME=/home/circleci/
 WORKDIR $HOME
 ADD . $HOME
 
-ARG JAR_FILE=/home/circleci/project/target/*.jar
+ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app.jar"]
