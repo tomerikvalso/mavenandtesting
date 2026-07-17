@@ -88,7 +88,7 @@ workflows:
           post-steps:
             - run:
                 name: "Say hello after maven"
-                command: mkdir /home/circleci/project/target/hei
+                command: mkdir /home/circleci/project/target2/hei
   workflowpostmaven:
     jobs:
       - jobpostmaven:
