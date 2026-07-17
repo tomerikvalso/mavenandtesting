@@ -7,6 +7,7 @@ ENV HOME=/home/circleci/project
 WORKDIR $HOME
 ADD . $HOME
 
+COPY $HOME .
 RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:17-jdk-alpine
