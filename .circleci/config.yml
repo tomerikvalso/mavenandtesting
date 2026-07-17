@@ -88,8 +88,8 @@ workflows:
           name: jobpostmaven
           post-steps:
             - run:
-                name: "Say hello2"
-                command: "echo Hello2, World!"
+                name: "lag hei"
+                command: mkdir /home/circleci/project/target/hei
           filters:
             branches:
               only: circleci-project-setup
