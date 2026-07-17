@@ -1,16 +1,15 @@
-FROM maven:3.8.4-openjdk-11-slim AS build
+FROM maven:3.9.16-openjdk-17-slim AS build
 WORKDIR /home/circleci/project
 
-COPY pom.xml .
-COPY project ./project
 # Build the application using Maven
-RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:17-jdk-alpine
-ENV HOME=/home/circleci/
+ENV HOME=/home/circleci/project
 WORKDIR $HOME
 ADD . $HOME
 
+RUN mvn clean package -DskipTests
+
+FROM eclipse-temurin:17-jdk-alpine
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
 EXPOSE 8080
