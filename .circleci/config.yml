@@ -29,7 +29,7 @@ jobs:
           docker_layer_caching: true
       - run:
           name: "lag hei"
-          command: mkdir /home/circleci/project/target/hei
+          command: mkdir /home/circleci/hei
       - run:
           name: Build an image
           command: |
