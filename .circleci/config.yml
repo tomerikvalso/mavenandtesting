@@ -19,7 +19,7 @@ jobs:
       - store_test_results:
           path: ~/test-results
 
-  jobpostmaven:
+  jobincmaven:
     docker:
       - image: cimg/base:2026.07
     
@@ -81,19 +81,10 @@ workflows:
           filters:
             branches:
               only: circleci-project-setup
-  maven_test:
-    jobs:
-      - maven/test:
-          command: '-X verify'
-          post-steps:
-            - run:
-                name: "Say hello after maven"
-                command: mkdir /home/circleci/project/target2/hei
   workflowpostmaven:
     jobs:
-      - jobpostmaven:
-          requires: maven/test
-          name: jobpostmaven
+      - jobincmaven:
+          name: jobincmaven
           post-steps:
             - run:
                 name: "lag hei"
