@@ -1,5 +1,5 @@
 FROM maven:3.9.16-openjdk-17-slim AS build
-WORKDIR /home/circleci/project
+WORKDIR /home/circleci
 
 # Build the application using Maven
 
