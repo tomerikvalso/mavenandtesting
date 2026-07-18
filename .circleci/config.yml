@@ -1,20 +1,91 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
 version: 2.1
-
+orbs:
+  maven: circleci/maven@2.1.1
 jobs:
-  build-and-test:
+  jobpremaven:
     docker:
-      - image: cimg/openjdk:19.0.1
+      - image: cimg/base:2026.07
+    
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
-          name: Build
-          command: mvn -B -DskipTests clean package
+          name: Save test results
+          command: |
+            mkdir -p ~/test-results/junit/
+            find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
+          when: always
+      - store_test_results:
+          path: ~/test-results
+
+  jobincmaven:
+    docker:
+      - image: cimg/base:2026.07
+
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
-          name: Test
-          command: mvn test
+          name: Build an image
+          command: |
+            docker build --tag $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME$CIRCLE_SHA1 .
+      - run:
+          name: Run application in background
+          command: |
+            docker run  -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME$CIRCLE_SHA1
+              background: true
+      - run:
+          name: ZAP baseline scan of application
+          command: |
+            (
+            docker pull owasp/zaptodockerweekly && \
+            docker run -t owasp/zap2docker-weekly zap-baseline.py \ 
+            -u https://raw.githubusercontent.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1/master/zap-baseline.conf \
+            -t http://172.17.0.2:8080/ || \
+            if [ $? -ne 1]; then exit 0; else exit 1; fi;
+            )
+
+  jobdeploy:
+    docker:
+      - image: google/cloud-sdk
+    working_directory: ~/dev2
+
+    steps:
+      - run:
+          name: "Say hello"
+          command: "echo Hello, World!"
+      - run:
+          name: Create app.yaml
+          command: chmod +x app.yaml.sh && ./app.yaml.sh > ./app.yaml
+      - run:
+          name: Set up GCloud
+          command: |
+            echo ${GOOGLE_PROJECT_ID} | 
+            echo $GCLOUD_SERVICE_KEY | base64 --decode | gcloud auth activate-service-account --key-file=-
+              gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
 
 workflows:
-  build-and-test:
+  workflowpremaven: 
     jobs:
-      - build-and-test
+      - jobpremaven:
+          name: jobpremaven
+          post-steps:
+            - run:
+                name: "Say hello"
+                command: "echo Hello, World pre!"
+          filters:
+            branches:
+              only: circleci-project-setup
+  workflowpostmaven:
+    jobs:
+      - jobincmaven:
+          name: jobincmaven
+          post-steps:
+            - run:
+                name: "lag hei"
+                command: mkdir /home/circleci/project/target/hei
+          filters:
+            branches:
+              only: circleci-project-setup
