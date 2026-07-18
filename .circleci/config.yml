@@ -22,7 +22,7 @@ jobs:
   jobincmaven:
     docker:
       - image: cimg/base:2026.07
-    
+
     steps:
       - checkout
       - setup_remote_docker:
