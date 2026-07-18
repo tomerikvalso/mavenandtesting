@@ -1,4 +1,4 @@
-FROM maven:3.8.4-jdk-17 AS build
+FROM maven:3.9.16-eclipse-temurin-17 AS build
 WORKDIR /home/circleci
 
 # Build the application using Maven
