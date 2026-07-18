@@ -1,4 +1,4 @@
-FROM maven:3.9.16-openjdk-17-slim AS build
+FROM 3.9.16-jdk17-debian13-dev
 WORKDIR /home/circleci
 
 # Build the application using Maven
