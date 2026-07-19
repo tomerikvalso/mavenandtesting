@@ -30,11 +30,11 @@ jobs:
       - run:
           name: Build an image
           command: |
-            docker build --tag $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME$CIRCLE_SHA1 .
+            docker build --tag japp .
       - run:
           name: Run application in background
           command: |
-            docker run  -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME$CIRCLE_SHA1
+            docker run -it --rm japp
               background: true
       - run:
           name: ZAP baseline scan of application
