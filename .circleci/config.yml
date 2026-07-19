@@ -19,7 +19,7 @@ jobs:
       - store_test_results:
           path: ~/test-results
 
-  jobincmaven:
+  jobincludemaven:
     docker:
       - image: cimg/base:2026.07
 
@@ -80,8 +80,8 @@ workflows:
               only: circleci-project-setup
   workflowpostmaven:
     jobs:
-      - jobincmaven:
-          name: jobincmaven
+      - jobincludemaven:
+          name: jobincludemaven
           post-steps:
             - run:
                 name: "lag hei"
