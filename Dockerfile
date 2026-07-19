@@ -5,8 +5,4 @@ RUN adduser --gid 10001 --uid 10001 \
     --disabled-password app
 
 RUN mkdir /app/statics/
-ADD statics /app/statics/
 
-RUN mkdir /opt/app
-COPY japp.jar /opt/app
-CMD ["java", "-jar", "/opt/app/japp.jar"]
