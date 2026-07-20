@@ -2,7 +2,7 @@ FROM maven:3.9.16-eclipse-temurin-17
 
 RUN mkdir /myapp
 
-ADD . /myapp
+ADD . /myapp/
 CMD["ls","-l","/myapp"]
 # denne er feil
 #ARG JAR_FILE=/myapp/target/*.jar
