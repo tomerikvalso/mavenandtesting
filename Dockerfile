@@ -1,6 +1,7 @@
-FROM maven:3.9.16-eclipse-temurin-17 AS build
+FROM maven:3.9.16-eclipse-temurin-17
 
-RUN mkdir statics/
-COPY pom.xml statics
+RUN mkdir myapp/
+COPY . myapp
+RUN cd myapp
 RUN mvn clean install
 
