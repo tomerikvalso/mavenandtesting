@@ -4,6 +4,7 @@ RUN mkdir /myapp
 
 WORKDIR /myapp
 
+RUN chmod 755 pom.xml
 RUN mvn clean install
 COPY . /myapp
 
