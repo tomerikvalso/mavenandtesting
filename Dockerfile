@@ -9,9 +9,8 @@ WORKDIR /myapp
 RUN mvn clean install
 RUN echo "did maven ok"
 
-RUN mkdir /myapp/target
-COPY /myapp/target /myapp/target
-
-ARG JAR_FILE=/myapp/target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+CMD["ls","-l","/myapp"]
+# denne er feil
+#ARG JAR_FILE=/myapp/target/*.jar
+#COPY ${JAR_FILE} app.jar
+#ENTRYPOINT ["java","-jar","/app.jar"]
