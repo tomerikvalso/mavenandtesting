@@ -4,7 +4,7 @@ RUN mkdir /myapp
 
 COPY . /myapp
 
-RUN cd /myapp
+WORKDIR /myapp
 
 RUN mvn clean install
 
