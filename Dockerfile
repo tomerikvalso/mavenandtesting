@@ -9,4 +9,7 @@ COPY . /myapp
 RUN chmod 755 pom.xml
 RUN mvn clean install
 
-CMD ["ls","-l", "/myapp"]
+
+ARG JAR_FILE=/myapp/target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
