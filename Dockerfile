@@ -6,4 +6,5 @@ RUN adduser --gid 10001 --uid 10001 \
 
 COPY pom.xml app
 RUN mkdir /app/statics/
+RUN mkdir mvn clean install
 
