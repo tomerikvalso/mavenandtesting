@@ -1,8 +1,4 @@
-FROM eclipse-temurin:25
-RUN addgroup --gid 10001 app
-RUN adduser --gid 10001 --uid 10001 \
-    --home /app --shell /sbin/nologin \
-    --disabled-password app
+FROM maven:3.9.16-eclipse-temurin-17 AS build
 
 COPY pom.xml app
 RUN mkdir /app/statics/
