@@ -9,6 +9,9 @@ WORKDIR /myapp
 RUN mvn clean install
 RUN echo "did maven ok"
 
-ARG JAR_FILE=target/*.jar
+RUN mkdir /myapp/target
+COPY target /myapp/target
+
+ARG JAR_FILE=/myapp/target/*.jar
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
