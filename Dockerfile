@@ -7,5 +7,6 @@ COPY . /myapp
 WORKDIR /myapp
 
 RUN mvn clean install
+RUN echo "did maven ok"
 
 CMD ["ls","-l", "/myapp"]
