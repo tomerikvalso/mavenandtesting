@@ -4,8 +4,9 @@ RUN mkdir /myapp
 
 WORKDIR /myapp
 
+COPY . /myapp
+
 RUN chmod 755 pom.xml
 RUN mvn clean install
-COPY . /myapp
 
 CMD ["ls","-l", "/myapp"]
