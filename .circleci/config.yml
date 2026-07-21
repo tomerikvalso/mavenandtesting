@@ -28,11 +28,6 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
-          name: Build maven
-          command: |
-            mvn clean install
-
-      - run:
           name: Build an image
           command: |
             docker build --tag japp .
