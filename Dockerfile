@@ -7,6 +7,8 @@ WORKDIR /myapp
 COPY . /myapp
 
 RUN chmod 755 pom.xml
+RUN mkdir /myapp/target
+
 RUN mvn clean install
 
 
