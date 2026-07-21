@@ -1,10 +1,11 @@
 FROM maven:3.9.16-eclipse-temurin-17
 
 RUN mkdir /myapp
+RUN mkdir /myapp2
 
 WORKDIR /myapp
 
-COPY . /myapp
+COPY /myapp /myapp2
 
 RUN chmod 755 pom.xml
 RUN mkdir /myapp/target
