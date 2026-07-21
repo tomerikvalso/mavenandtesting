@@ -4,6 +4,6 @@ FROM maven:3.9.16-eclipse-temurin-17
 
 #WORKDIR /myapp
 
-ARG JAR_FILE=/home/circleci/project/target/*.jar
+ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
