@@ -35,6 +35,8 @@ jobs:
           name: Run application in background
           command: |
             docker run -it --rm japp
+              background: true
+
       - run:
           name: ZAP baseline scan of application
           command: |
