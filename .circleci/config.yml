@@ -41,12 +41,9 @@ jobs:
           name: ZAP baseline scan of application
           command: |
             (
-            docker pull ghcr.io/zaproxy/zaproxy:bare && \
-            docker run -t ghcr.io/zaproxy/zaproxy:bare zap-baseline.py \ 
-            -u https://raw.githubusercontent.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1/master/zap-baseline.conf \
-            -t http://172.17.0.2:8080/ || \
-            if [ $? -ne 1]; then exit 0; else exit 1; fi;
-            )
+            docker pull ghcr.io/zaproxy/zap-stable && \
+            docker run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable bash -c "zap.sh -cmd -addonupdate; zap.sh -cmd -autorun /zap/wrk/zap.yaml"
+
 
   jobdeploy:
     docker:
