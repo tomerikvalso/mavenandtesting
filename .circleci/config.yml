@@ -42,7 +42,7 @@ jobs:
           command: |
             (
             docker pull ghcr.io/zaproxy/zap-stable && \
-            docker run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap.sh -cmd -autorun /zap/wrk/zap.yaml
+            docker run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap.sh -cmd -autorun /zap/wrk/zap2.yaml
 
 
   jobdeploy:
