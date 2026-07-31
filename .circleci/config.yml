@@ -41,7 +41,8 @@ jobs:
           name: ZAP baseline scan of application
           command: |
             (
-            docker pull ghcr.io/zaproxy/zap-stable && \
+            docker pull ghcr.io/zaproxy/zaproxy:bare && \
+            docker pull zaproxy/zap-bare && \
             docker run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap.sh -cmd -autorun /zap/wrk/zap2.yaml
             )
 
