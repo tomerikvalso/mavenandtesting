@@ -1,0 +1,23 @@
+env:
+  contexts:
+    - name: Default Context
+      urls:
+        - https://www.example.com
+      includePaths: []
+      excludePaths: []
+  parameters:
+    failOnWarning: false
+    failOnError: true
+    progressToStdout: true
+jobs:
+  - name: spider
+    parameters:
+      maxDuration: 0
+  - name: activeScan
+    parameters:
+      policy: Default Policy
+  - name: report
+    parameters:
+      template: traditional-html
+      reportDir: /zap/wrk
+      reportFile: report.html
