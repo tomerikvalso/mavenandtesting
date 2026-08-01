@@ -38,12 +38,16 @@ jobs:
           background: true
 
       - run:
+          name: Create CHcommand
+          command: chmod +x /zap/wrk/zap.yaml
+
+      - run:
           name: ZAP baseline scan of application
           command: |
             (
             docker pull ghcr.io/zaproxy/zaproxy:bare && \
             docker pull zaproxy/zap-bare && \
-            docker run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap.sh -cmd -autorun wrk/zap.yaml
+            docker run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap.sh -cmd -autorun /zap/wrk/zap.yaml
             )
 
   jobdeploy:
