@@ -42,6 +42,11 @@ jobs:
           command: chmod +x /zap/wrk/zap.yaml
 
       - run:
+          name: Create CHcommand2
+          command: chmod +x zap/wrk/zap.yaml
+
+
+      - run:
           name: ZAP baseline scan of application
           command: |
             (
