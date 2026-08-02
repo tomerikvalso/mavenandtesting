@@ -41,6 +41,9 @@ jobs:
           name: Create CHcommand2
           command: chmod 755 zap/wrk/zap.yaml
 
+      - run:
+          name: "lag hei"
+          command: mkdir /home/circleci/project/target/hei
 
       - run:
           name: ZAP baseline scan of application
