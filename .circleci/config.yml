@@ -48,10 +48,7 @@ jobs:
       - run:
           name: ZAP baseline scan of application
           command: |
-            (
-            mkdir /home/circleci/zap;
-            mkdir /home/circleci/zap/wrk;
-            cp zap/wrk/zap.yaml /home/circleci/zap/wrk/zap.yaml            
+            (         
             docker pull ghcr.io/zaproxy/zaproxy:bare && \
             docker pull zaproxy/zap-bare && \
             docker run -u root -v $(pwd):/home/zap/wrk/:rw -t zaproxy/zap-stable zap.sh -cmd -autorun /home/circleci/zap/wrk/zap.yaml
