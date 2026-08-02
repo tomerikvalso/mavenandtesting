@@ -46,12 +46,12 @@ jobs:
           name: ZAP baseline scan of application
           command: |
             (
-            mkdir /zap;
-            mkdir /zap/wrk;
-            cp zap/wrk/zap.yaml /zap/wrk/zap.yaml            
+            mkdir /home/zap;
+            mkdir /home/zap/wrk;
+            cp zap/wrk/zap.yaml /home/zap/wrk/zap.yaml            
             docker pull ghcr.io/zaproxy/zaproxy:bare && \
             docker pull zaproxy/zap-bare && \
-            docker run -u root -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap.sh -cmd -autorun /zap/wrk/zap.yaml
+            docker run -u root -v $(pwd):/home/zap/wrk/:rw -t zaproxy/zap-stable zap.sh -cmd -autorun /home/zap/wrk/zap.yaml
             
             )
 
