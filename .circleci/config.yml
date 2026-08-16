@@ -8,6 +8,8 @@ jobs:
     
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Save test results
           command: |
@@ -18,11 +20,13 @@ jobs:
           path: ~/test-results
 
   jobincludemaven:
-    machine:
-      image: ubuntu-2404:current
+    docker:
+      - image: cimg/base:2026.07
 
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: false
       - run:
           name: Build an image
           command: |
