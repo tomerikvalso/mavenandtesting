@@ -20,8 +20,8 @@ jobs:
           path: ~/test-results
 
   jobincludemaven:
-    docker:
-      - image: cimg/base:2026.07
+    machine:
+      image: cimg/base:2026.07
 
     steps:
       - checkout
