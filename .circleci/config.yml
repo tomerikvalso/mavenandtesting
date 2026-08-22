@@ -33,7 +33,7 @@ jobs:
           name: Run application in background
           command: |
             docker run -it --rm japp \
-            curl -X GET http://localhost:8080/HEI/
+            curl -X GET http://localhost:8081/HEI/
 
           background: true
 
