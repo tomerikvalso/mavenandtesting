@@ -32,7 +32,9 @@ jobs:
       - run:
           name: Run application in background
           command: |
-            docker run -it --rm japp
+            docker run -it --rm japp \
+            curl -X GET http://localhost:8080/HEI/
+
           background: true
 
       - run:
@@ -42,10 +44,6 @@ jobs:
       - run:
           name: "lag hei"
           command: mkdir /home/circleci/project/target/hei
-
-      - run:
-          name: "curl localhost:8080/HEI/"
-          command: curl -X GET http://localhost:8080/HEI/
 
       - run:
           name: ZAP baseline scan of application
