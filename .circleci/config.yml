@@ -5,7 +5,7 @@ jobs:
   jobpremaven:
     docker:
       - image: cimg/base:2026.07
-    
+    type: build # or release, approval, no-op
     steps:
       - checkout
       - setup_remote_docker:
