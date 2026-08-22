@@ -21,8 +21,6 @@ jobs:
 
   jobincludemaven:
     machine: true
-
-
     steps:
       - checkout
 
@@ -50,7 +48,7 @@ jobs:
             (         
             docker pull ghcr.io/zaproxy/zaproxy:bare && \
             docker pull zaproxy/zap-bare && \
-            docker run -u root -v $(pwd):/dasslokk:rw -t zaproxy/zap-stable zap.sh -cmd -autorun /dasslokk/wrk/zap.yaml
+            docker run -u root -v $(pwd):/dasslokk:rw -t zaproxy/zap-stable zap.sh -cmd -autorun /dasslokk/zap/wrk/zap.yaml
             
             )
 
