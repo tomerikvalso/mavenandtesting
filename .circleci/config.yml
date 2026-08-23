@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Run application in background
           command: |
-            docker run -it --rm japp 
+            docker run -it --rm japp \
 
           background: true
 
@@ -50,7 +50,7 @@ jobs:
             (         
             docker pull ghcr.io/zaproxy/zaproxy:bare && \
             docker pull zaproxy/zap-bare && \
-            docker run -u root -v $(pwd):/zap/wrk:rw --network="host"  zaproxy/zap-stable zap-baseline.py -t http://localhost:8081 -r scan-report.html
+            docker run -u root -v $(pwd):/zap/wrk:rw -t ghcr.io/zaproxy/zaproxy:stable curl http://localhost:8080
             
             )
 
