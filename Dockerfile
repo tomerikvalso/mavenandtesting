@@ -9,4 +9,4 @@ COPY ${JAR_FILE} app.jar
 
 COPY zap/wrk/zap.yaml  /home/circleci/zap/wrk/zap.yaml
 
-ENTRYPOINT ["java","-jar","/app.jar", "--net" ,"zapnet"]
+ENTRYPOINT ["java","-jar","/app.jar" ]
