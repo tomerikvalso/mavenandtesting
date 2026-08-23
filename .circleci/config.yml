@@ -32,8 +32,7 @@ jobs:
       - run:
           name: Run application in background
           command: |
-             
-            docker run  -it --rm japp \
+            docker run  -it --rm japp 
 
           background: true
 
