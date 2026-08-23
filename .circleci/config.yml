@@ -32,7 +32,8 @@ jobs:
       - run:
           name: Run application in background
           command: |
-            docker run -it --rm japp \
+            docker network create zapnet \
+            docker run --net zapnet -it --rm japp \
 
           background: true
 
@@ -50,7 +51,7 @@ jobs:
             (         
             docker pull ghcr.io/zaproxy/zaproxy:bare && \
             docker pull zaproxy/zap-bare && \
-            docker run -u root -v $(pwd):/zap/wrk:rw -t ghcr.io/zaproxy/zaproxy:stable curl http://localhost:8080
+            docker run -u root -v $(pwd):/zap/wrk:rw -t ghcr.io/zaproxy/zaproxy:stable --net zapnet curl http://localhost:8080
             
             )
 
