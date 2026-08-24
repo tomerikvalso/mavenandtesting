@@ -37,6 +37,11 @@ jobs:
           background: true
 
       - run:
+          name: Run application in background
+          command: |
+            docker network inspect bridge
+
+      - run:
           name: Create CHcommand2
           command: chmod 755 zap/wrk/zap.yaml
 
