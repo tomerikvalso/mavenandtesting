@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     @GetMapping("/hello")
-    public String index() {
+    public String hello() {
+        return "Hello World!";
+    }
+
+    @GetMapping("/robots.txt")
+    public String index2() {
         return "Hello World!";
     }
 
