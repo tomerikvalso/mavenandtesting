@@ -25,6 +25,16 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Build an image
+          command: |
+            docker build --tag japp .
+      - run:
+          name: Run application in background
+          command: |
+            docker run  -it --rm japp 
+
+          background: true
 
       - run:
           name: Create CHcommand2
