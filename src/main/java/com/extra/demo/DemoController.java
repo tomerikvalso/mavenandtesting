@@ -13,7 +13,12 @@ public class DemoController {
     }
 
     @GetMapping("/robots.txt")
-    public String index2() {
+    public String robots() {
+        return "Hello World!";
+    }
+
+    @GetMapping("/sitemap.xml")
+    public String sitemap() {
         return "Hello World!";
     }
 
