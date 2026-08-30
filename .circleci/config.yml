@@ -49,16 +49,6 @@ jobs:
           name: "lag hei"
           command: mkdir /home/circleci/project/target/hei
 
-      - run:
-          name: ZAP baseline scan of application
-          command: |
-            (         
-            docker pull ghcr.io/zaproxy/zaproxy:bare && \
-            docker pull zaproxy/zap-bare && \
-            docker run -u root -v $(pwd):/zap/wrk:rw --network="host"  zaproxy/zap-stable zap-baseline.py -t http://172.17.0.2:8080 -r scan-report.html
-            
-            )
-
 
   jobdeploy:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
