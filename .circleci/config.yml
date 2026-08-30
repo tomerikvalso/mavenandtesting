@@ -45,10 +45,6 @@ jobs:
           name: Create CHcommand2
           command: chmod 755 zap/wrk/zap.yaml
 
-      - run:
-          name: "lag hei"
-          command: mkdir /home/circleci/project/target/hei
-
 
   jobdeploy:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
