@@ -114,12 +114,12 @@ workflows:
           filters:
             branches:
               only: circleci-project-setup
-      - jobdeploy:
-          name: deploy-staging
-          post-steps:
-            - run:
-                name: Deploy app
-                command: gcloud app deploy app.yaml
-          filters:
-            branches:
-              only: circleci-project-setup
+#      - jobdeploy:
+#          name: deploy-staging
+#          post-steps:
+#            - run:
+#                name: Deploy app
+#                command: gcloud app deploy app.yaml
+#          filters:
+#            branches:
+#              only: circleci-project-setup
