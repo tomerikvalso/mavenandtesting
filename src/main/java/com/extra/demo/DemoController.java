@@ -12,6 +12,11 @@ public class DemoController {
         return "Hello World!";
     }
 
+    @GetMapping("/")
+    public String index() {
+        return "Hello World!";
+    }
+
     @GetMapping("/robots.txt")
     public String robots() {
         return "Hello World!";
