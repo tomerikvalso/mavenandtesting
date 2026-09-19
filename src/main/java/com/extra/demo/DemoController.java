@@ -17,10 +17,6 @@ public class DemoController {
         return "Hello World!";
     }
 
-    @GetMapping("/robots.txt")
-    public String robots() {
-        return "Hello World!";
-    }
 
     @GetMapping("/sitemap.xml")
     public String sitemap() {
