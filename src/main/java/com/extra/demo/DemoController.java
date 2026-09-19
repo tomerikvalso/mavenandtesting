@@ -12,11 +12,20 @@ public class DemoController {
         return "Hello World!";
     }
 
-    @GetMapping("/")
+    @GetMapping("/2")
     public String index() {
         return "Hello World!";
     }
 
+    @GetMapping("")
+    public String index0() {
+        return "Hello World!";
+    }
+
+    @GetMapping("/robots.txt")
+    public String robots() {
+        return "Hello World!";
+    }
 
     @GetMapping("/sitemap.xml")
     public String sitemap() {
