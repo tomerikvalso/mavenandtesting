@@ -50,6 +50,15 @@ jobs:
           command: mkdir /home/circleci/project/target/hei
 
       - run:
+          name: "curl"
+          command: curl http://172.17.0.2:8080/ -v
+
+      - run:
+          name: "wget"
+          command: wget http://172.17.0.2:8080/ -v
+
+
+      - run:
           name: ZAP baseline scan of application
           command: |
             (         
