@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Run application in background
           command: |
-            docker exec curl --retry 10 --retry-connrefused http://localhost:8080/hello
+            docker exec wget http://localhost:8080/hello
           background: true
 
       - run:
