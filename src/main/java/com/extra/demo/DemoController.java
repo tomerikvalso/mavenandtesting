@@ -17,19 +17,5 @@ public class DemoController {
         return "Hello World!";
     }
 
-    @GetMapping("/")
-    public String index0() {
-        return "Hello World!";
-    }
-
-    @GetMapping("/robots.txt")
-    public String robots() {
-        return "Hello World!";
-    }
-
-    @GetMapping("/sitemap.xml")
-    public String sitemap() {
-        return "Hello World!";
-    }
 
 }
