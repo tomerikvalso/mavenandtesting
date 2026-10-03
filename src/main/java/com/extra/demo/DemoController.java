@@ -16,8 +16,7 @@ public class DemoController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Cross-Origin-Embedder-Policy", "require-corp");
         responseHeaders.set("X-Content-Type-Options","nosniff");
-
-        return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.OK);
     }
 
     @GetMapping("/2")
