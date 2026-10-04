@@ -16,6 +16,9 @@ public class DemoController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Cross-Origin-Embedder-Policy", "require-corp");
         responseHeaders.set("X-Content-Type-Options","nosniff");
+        responseHeaders.set("Content-Security-Policy", "frame-ancestors 'none'");
+        responseHeaders.set("Cache-Control", "no-cache, no-store, max-age=0, must-revalidate");
+
         return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.OK);
     }
 
