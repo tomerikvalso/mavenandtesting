@@ -23,7 +23,7 @@ public class DemoController {
 
         ResponseEntity<String> responseWithHeaderUsingResponseEntity = ResponseEntity.ok()
                // .headers(responseHeaders)
-                .headers(responseHeaders)
+                //.headers(responseHeaders)
                 .body("{\"text\" : \"Response with header using ResponseEntity2\"}");
         return responseWithHeaderUsingResponseEntity;
 
