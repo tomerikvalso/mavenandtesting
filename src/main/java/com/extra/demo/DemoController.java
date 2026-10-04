@@ -17,14 +17,16 @@ public class DemoController {
         responseHeaders.set("Cross-Origin-Embedder-Policy", "require-corp");
         responseHeaders.set("X-Content-Type-Options","nosniff");
         responseHeaders.set("Content-Security-Policy", "frame-ancestors 'none'");
-        responseHeaders.set("Cache-Control","public, max-age:120, immutable");
-        responseHeaders.set("Access-Control-Max-Age", "600");
-        responseHeaders.set("Max-Age", "600");
+        responseHeaders.set("Cache-Control","no-cache, no-store, must-revalidate, private");
+        responseHeaders.set("Pragma", "no-cache");
+        responseHeaders.set("Pragma", "no-cache");
+
         ResponseEntity<String> responseWithHeaderUsingResponseEntity = ResponseEntity.ok()
                // .headers(responseHeaders)
                 .headers(responseHeaders)
                 .body("{\"text\" : \"Response with header using ResponseEntity2\"}");
         return responseWithHeaderUsingResponseEntity;
+
     }
 
 
