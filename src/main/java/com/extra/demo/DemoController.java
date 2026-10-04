@@ -19,7 +19,7 @@ public class DemoController {
         responseHeaders.set("Content-Security-Policy", "frame-ancestors 'none'");
         responseHeaders.set("Cache-Control","no-cache, no-store, must-revalidate, private");
         responseHeaders.set("Pragma", "no-cache");
-        responseHeaders.set("Pragma", "no-cache");
+        responseHeaders.set("Expires", "0");
 
         ResponseEntity<String> responseWithHeaderUsingResponseEntity = ResponseEntity.ok()
                // .headers(responseHeaders)
