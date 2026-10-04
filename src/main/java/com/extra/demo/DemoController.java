@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class DemoController {
 
     @GetMapping("/hello")
@@ -20,14 +20,14 @@ public class DemoController {
         responseHeaders.set("Cache-Control","public, max-age:120, immutable");
         responseHeaders.set("Access-Control-Max-Age", "600");
         responseHeaders.set("Max-Age", "600");
-
-        return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.OK);
+        ResponseEntity<String> responseWithHeaderUsingResponseEntity = ResponseEntity.ok()
+               // .headers(responseHeaders)
+                .headers(responseHeaders)
+                .body("{\"text\" : \"Response with header using ResponseEntity2\"}");
+        return responseWithHeaderUsingResponseEntity;
     }
 
-    @GetMapping("/2")
-    public String index() {
-        return "Hello World!";
-    }
+
 
 
 }
